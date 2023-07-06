@@ -1,5 +1,17 @@
 # msw를 Next.js 13에서 사용하는 방법
 
+## Repo 사용 방법
+
+```bash
+nvm use 16 # Node v18 미만 버전만 지원되므로 LTS 16버전을 사용해주세요.
+yarn install
+yarn dev
+```
+
+## 자주 발생하는 오류 해결
+
+- `fetch failed` -> Node v16을 사용해주세요.
+
 ## 해결 방법
 
 - 간단히 버전만 맞춰주면 됩니다. 가능한 최신 버전의 조합은 아래와 같습니다:
