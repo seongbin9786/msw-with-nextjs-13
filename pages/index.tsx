@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react'
-import { Book, Review } from '../mocks/types'
+import { useState } from "react";
+import { Book, Review } from "../mocks/types";
 
 type Props = {
-  book: Book
-}
+  book: Book;
+};
 
 export default function Home({ book }: Props) {
-  const [reviews, setReviews] = useState<Review[] | null>(null)
-
-  useEffect(() => {
-    fetch('https://my.backend/bookaa')
-      .then((res) => (res.ok ? res.json() : `bad request`))
-      .then((data) => console.log(`client: ${JSON.stringify(data)}`))
-  }, [])
+  const [reviews, setReviews] = useState<Review[] | null>(null);
 
   const handleGetReviews = () => {
     // Client-side request are mocked by `mocks/browser.ts`.
-    fetch('/reviews')
+    fetch("/reviews")
       .then((res) => res.json())
-      .then(setReviews)
-  }
+      .then(setReviews);
+  };
 
   return (
     <div>
@@ -38,17 +32,17 @@ export default function Home({ book }: Props) {
         </ul>
       )}
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps() {
   // Server-side requests are mocked by `mocks/server.ts`.
-  const res = await fetch('https://my.backend/book')
-  const book = await res.json()
+  const res = await fetch("https://my.backend/bookaa");
+  const book = await res.json();
 
   return {
     props: {
       book,
     },
-  }
+  };
 }
